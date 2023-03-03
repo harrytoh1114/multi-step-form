@@ -1,0 +1,78 @@
+.form-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 50vh;
+}
+
+.form-status {
+  background: url(../../images/bg-sidebar-desktop.svg);
+  background-size: cover;
+  width: 35%;
+  padding-top: 2rem;
+  padding-left: 2.5rem;
+  border-radius: 1rem;
+}
+
+.form-status .list {
+  list-style: none;
+}
+
+.form-status .list .inner-list {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: row;
+  column-gap: 1.2rem;
+}
+
+.form-status .list .inner-list .numbering-wrapper {
+  font-family: var(--font-regular);
+  font-size: 1.4rem;
+  border-radius: 50%;
+  border: 2px solid var(--secondary-white);
+  color: var(--secondary-white);
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-status .list .inner-list .numbering-wrapper.active {
+  animation: highlight-numbering 0.2s forwards;
+}
+
+.form-status .list .inner-list .step-wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3px;
+}
+
+.form-status .list .inner-list .step {
+  font-family: var(--font-regular);
+  font-size: 1.2rem;
+  color: var(--secondary-cool-gray);
+  text-transform: uppercase;
+  width: 84%;
+}
+
+.form-status .list .inner-list .step-name {
+  font-family: var(--font-medium);
+  font-size: 1.4rem;
+  color: var(--secondary-white);
+  text-transform: uppercase;
+}
+
+.form-input {
+  width: 70%;
+}
+
+@keyframes highlight-numbering {
+  0% {
+    background-color: none;
+  }
+
+  100% {
+    background-color: var(--primary-light-blue);
+    color: var(--primary-marine-blue);
+    border: unset;
+  }
+}

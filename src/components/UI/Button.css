@@ -1,0 +1,34 @@
+.button {
+  padding: 1rem 2rem;
+  width: 10rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  display: inline-block;
+  background: none;
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-medium);
+}
+
+.button:hover {
+  filter: brightness(115%);
+}
+
+.next-step {
+  background-color: var(--primary-marine-blue);
+  color: var(--secondary-white);
+}
+
+.go-back {
+  color: var(--secondary-cool-gray);
+}
+
+.go-back:hover {
+  color: var(--primary-marine-blue);
+  background-color: var(--secondary-light-gray);
+}
+
+.confirm {
+  background-color: var(--primary-purplish-blue);
+  color: var(--secondary-white);
+}

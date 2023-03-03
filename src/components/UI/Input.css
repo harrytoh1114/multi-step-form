@@ -1,0 +1,42 @@
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  margin-bottom: 2rem;
+  font-family: var(--font-regular);
+}
+
+.input-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+}
+
+.input-label {
+  color: var(--primary-marine-blue);
+}
+
+.input-error {
+  color: var(--primary-strawberry-red);
+}
+
+.input {
+  border: 1px solid var(--secondary-light-gray);
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.input:focus {
+  outline: 1px solid var(--primary-purplish-blue);
+}
+
+.input.error {
+  outline: 1px solid var(--primary-strawberry-red);
+}
+
+.radio {
+  display: flex;
+  justify-content: space-between;
+}

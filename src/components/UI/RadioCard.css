@@ -1,0 +1,13 @@
+.radio-card {
+  height: 25rem;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.radio-card-details {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}

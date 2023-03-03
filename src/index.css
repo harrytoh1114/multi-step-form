@@ -1,13 +1,53 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@font-face {
+  font-family: "Ubuntu-Bold";
+  src: url(./fonts/Ubuntu-Bold.ttf) format("truetype");
+  font-weight: 700;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: "Ubuntu-Medium";
+  src: url(./fonts/Ubuntu-Medium.ttf) format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Ubuntu-Regular";
+  src: url(./fonts/Ubuntu-Regular.ttf) format("truetype");
+  font-weight: 400;
+}
+
+:root {
+  --font-bold: "Ubuntu-Bold";
+  --font-medium: "Ubuntu-Medium";
+  --font-regular: "Ubuntu-Regular";
+
+  --primary-marine-blue: hsl(213, 96%, 18%);
+  --primary-purplish-blue: hsl(243, 100%, 62%);
+  --primary-pastel-blue: hsl(228, 100%, 84%);
+  --primary-light-blue: hsl(206, 94%, 87%);
+  --primary-strawberry-red: hsl(354, 84%, 57%);
+
+  --secondary-light-gray: hsl(229, 24%, 87%);
+  --secondary-cool-gray: hsl(231, 11%, 63%);
+  --secondary-magnolia: hsl(217, 100%, 97%);
+  --secondary-alabaster: hsl(231, 100%, 99%);
+  --secondary-white: hsl(0, 0%, 100%);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 1.6rem;
+  background-color: var(--secondary-magnolia);
 }

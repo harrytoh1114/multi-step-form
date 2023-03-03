@@ -1,0 +1,32 @@
+.form-control {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  padding-top: 3rem;
+}
+
+.form-header {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.6rem;
+}
+
+.form-title {
+  font-family: var(--font-bold);
+  color: var(--primary-marine-blue);
+}
+
+.form-description {
+  font-family: var(--font-regular);
+  font-size: 1.2rem;
+  color: var(--secondary-cool-gray);
+}
+
+.form-body {
+  margin-top: 3rem;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+}
