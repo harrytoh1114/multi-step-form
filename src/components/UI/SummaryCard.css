@@ -1,0 +1,84 @@
+.summary-card-details {
+  background-color: var(--secondary-magnolia);
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+.summary-card-plan-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary-card-plan-title {
+  font-family: var(--font-bold);
+  font-size: 1.4rem;
+  color: var(--primary-marine-blue);
+}
+
+.summary-card-plan-change {
+  font-family: var(--font-regular);
+  font-size: 1.4rem;
+  color: var(--secondary-cool-gray);
+  text-decoration: underline;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: var(--secondary-white);
+  border: none;
+}
+
+.summary-card-plan-change:hover {
+  color: var(--primary-purplish-blue);
+}
+
+.summary-card-plan-price {
+  font-family: var(--font-bold);
+  font-size: 1.4rem;
+  color: var(--primary-marine-blue);
+}
+
+.summary-divider {
+  margin: 2.5rem 0 2rem;
+  height: 1px;
+  border: none;
+  background-color: var(--secondary-light-gray);
+}
+
+.summary-card-plan-addOns {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.summary-card-plan-addOn {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-regular);
+  font-size: 1.4rem;
+}
+
+.summary-card-plan-addOn-title {
+  color: var(--secondary-cool-gray);
+}
+
+.summary-card-plan-addOn-price {
+  color: var(--primary-marine-blue);
+}
+
+.summary-card-summary-total {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.summary-card-summary-title {
+  font-family: var(--font-regular);
+  font-size: 1.6rem;
+  color: var(--secondary-cool-gray);
+}
+
+.summary-card-summary-amount {
+  font-family: var(--font-bold);
+  font-size: 2rem;
+  color: var(--primary-purplish-blue);
+}

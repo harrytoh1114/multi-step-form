@@ -1,13 +1,49 @@
 .radio-card {
-  height: 25rem;
-  width: auto;
+  width: 30%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--secondary-light-gray);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.radio-card.selected {
+  border: 1px solid var(--primary-purplish-blue);
+  background-color: var(--secondary-magnolia);
+}
+
+.radio-card:hover {
+  border: 1px solid var(--primary-purplish-blue);
+}
+
+.radio-card img {
+  width: 4rem;
 }
 
 .radio-card-details {
   display: flex;
   flex-direction: column;
   row-gap: 5px;
+  margin-top: 4rem;
+}
+
+.radio-title {
+  font-family: var(--font-medium);
+  font-size: 1.4rem;
+  color: var(--primary-marine-blue);
+}
+
+.radio-price {
+  font-family: var(--font-regular);
+  font-size: 1.4rem;
+  color: var(--secondary-cool-gray);
+}
+
+.radio-complimentary {
+  font-family: var(--font-regular);
+  font-size: 1.4rem;
+  color: var(--primary-marine-blue);
 }

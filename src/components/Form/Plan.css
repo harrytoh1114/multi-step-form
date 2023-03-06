@@ -1,0 +1,33 @@
+.plan-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.plan-switch {
+  margin-top: 2rem;
+  padding: 1rem 0;
+  border-radius: 5px;
+  background-color: var(--secondary-magnolia);
+}
+
+.plan-switch-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.plan-switch-wrapper.active {
+  color: var(--primary-marine-blue);
+}
+
+.plan-switch-period {
+  font-family: var(--font-bold);
+  font-size: 1.4rem;
+  color: var(--secondary-cool-gray);
+}
+
+.plan-switch-period.selected {
+  color: var(--primary-marine-blue);
+}

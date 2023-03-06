@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import { formContext } from "../../context/formContext";
 
 import Card from "../UI/Card";
+import AddOns from "./AddOns";
 import "./FinalForm.css";
 import PersonalInfo from "./PersonalInfo";
 import Plan from "./Plan";
+import Summary from "./Summary";
 
 const FinalForm = () => {
   const formCtx = useContext(formContext);
@@ -13,7 +15,10 @@ const FinalForm = () => {
     <Card classes="form-wrapper">
       <div className="form-status">
         <ul className="list">
-          <li className="inner-list">
+          <li
+            className="inner-list"
+            onClick={() => formCtx.setFormState("personal")}
+          >
             <div
               className={`numbering-wrapper ${
                 formCtx.formState === "personal" && "active"
@@ -26,7 +31,10 @@ const FinalForm = () => {
               <p className="step-name">Your Info</p>
             </div>
           </li>
-          <li className="inner-list">
+          <li
+            className="inner-list"
+            onClick={() => formCtx.setFormState("plan")}
+          >
             <div
               className={`numbering-wrapper ${
                 formCtx.formState === "plan" && "active"
@@ -39,7 +47,10 @@ const FinalForm = () => {
               <p className="step-name">Select Plan</p>
             </div>
           </li>
-          <li className="inner-list">
+          <li
+            className="inner-list"
+            onClick={() => formCtx.setFormState("add-ons")}
+          >
             <div
               className={`numbering-wrapper ${
                 formCtx.formState === "add-ons" && "active"
@@ -52,7 +63,10 @@ const FinalForm = () => {
               <p className="step-name">Add-ons</p>
             </div>
           </li>
-          <li className="inner-list">
+          <li
+            className="inner-list"
+            onClick={() => formCtx.setFormState("summary")}
+          >
             <div
               className={`numbering-wrapper ${
                 formCtx.formState === "summary" && "active"
@@ -70,6 +84,8 @@ const FinalForm = () => {
       <div className="form-input">
         {formCtx.formState === "personal" && <PersonalInfo />}
         {formCtx.formState === "plan" && <Plan />}
+        {formCtx.formState === "add-ons" && <AddOns />}
+        {formCtx.formState === "summary" && <Summary />}
       </div>
     </Card>
   );

@@ -1,7 +1,6 @@
 import React from "react";
 
 import "./Input.css";
-import RadioCard from "./RadioCard";
 
 const Input = ({
   type,
@@ -9,49 +8,29 @@ const Input = ({
   title,
   value,
   label,
-  inputHandler,
+  onChange,
   errorText,
 }) => {
-  let input;
-  if (type === "text" || type === "email" || type === "phone") {
-    input = (
-      <>
-        <div className="input-header">
-          <label htmlFor={label} className="input-label">
-            {title}
-          </label>
-          {errorText && <p className="input-error">{errorText}</p>}
-        </div>
-        <input
-          id={label}
-          type={type}
-          placeholder={placeholder}
-          value={value}
-          onChange={(e) => {
-            inputHandler(e.target.value);
-          }}
-          className="input"
-        />
-      </>
-    );
-
-    if (type === "radio") {
-      input = (
-        <input
-          id={label}
-          type={type}
-          placeholder={placeholder}
-          value={value}
-          onChange={(e) => {
-            inputHandler(e.target.value);
-          }}
-          className="radio"
-        />
-      );
-    }
-  }
-
-  return <div className="input-wrapper">{input}</div>;
+  return (
+    <div className="input-wrapper">
+      <div className="input-header">
+        <label htmlFor={label} className="input-label">
+          {title}
+        </label>
+        {errorText && <p className="input-error">{errorText}</p>}
+      </div>
+      <input
+        id={label}
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => {
+          onChange(e.target.value);
+        }}
+        className="input"
+      />
+    </div>
+  );
 };
 
 export default Input;
