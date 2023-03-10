@@ -142,7 +142,7 @@ const PersonalInfo = () => {
       />
       <Input
         id="phone"
-        type="phone"
+        type="tel"
         title="Phone Number"
         label="phone"
         placeholder="e.g 1234 5678"
