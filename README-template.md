@@ -48,8 +48,8 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: https://github.com/harrytoh1114/multi-step-form/
+- Live Site URL: https://eloquent-otter-735c62.netlify.app/
 
 ## My process
 
