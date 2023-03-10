@@ -1,5 +1,4 @@
 .check-card {
-  padding: 1.5rem 2rem;
   display: flex;
   align-items: center;
   border: 1px solid var(--secondary-light-gray);
@@ -20,6 +19,7 @@
 .check-card-details {
   width: 100%;
   font-size: 1.4rem;
+  padding: 1.5rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,7 +43,7 @@
 .check-card-details .checkmark {
   position: absolute;
   top: 50%;
-  left: 0;
+  left: 2rem;
   transform: translateY(-50%);
   height: 2rem;
   width: 2rem;
@@ -55,7 +55,7 @@
   background-color: var(--primary-purplish-blue);
 }
 
-.check-card-details .checkmark:after {
+.check-card-details .checkmark::after {
   content: url("../../images/icon-checkmark.svg");
   position: absolute;
   display: none;
@@ -92,4 +92,14 @@
 .check-card-price {
   font-family: var(--font-regular);
   color: var(--primary-purplish-blue);
+}
+
+@media only screen and (max-width: 768px) {
+  .check-card-details-wrapper {
+    margin-left: 3rem;
+  }
+
+  .check-card-details .checkmark {
+    left: 1.5rem;
+  }
 }

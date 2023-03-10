@@ -11,3 +11,17 @@
   background-color: var(--secondary-white);
   box-shadow: 1px 3px 10px rgba(0, 0, 0, 0.2);
 }
+
+@media only screen and (max-width: 768px) {
+  .card {
+    position: relative;
+    padding: 0;
+    border-radius: 0;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: unset;
+    box-shadow: unset;
+    
+  }
+}

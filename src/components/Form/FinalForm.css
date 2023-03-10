@@ -1,7 +1,7 @@
 .form-wrapper {
   display: flex;
   flex-direction: row;
-  height: 55vh;
+  height: 50rem;
 }
 
 .form-status {
@@ -9,7 +9,6 @@
   background-size: cover;
   width: 35%;
   padding-top: 2rem;
-  padding-left: 2.5rem;
   border-radius: 1rem;
 }
 
@@ -18,11 +17,10 @@
 }
 
 .form-status .list .inner-list {
-  margin: 2rem 0;
+  margin: 2rem;
   display: flex;
   flex-direction: row;
   column-gap: 1.2rem;
-  cursor: pointer;
 }
 
 .form-status .list .inner-list .numbering-wrapper {
@@ -31,7 +29,8 @@
   border-radius: 50%;
   border: 1px solid var(--secondary-white);
   color: var(--secondary-white);
-  width: 3.2rem;
+  width: 3rem;
+  height: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -75,5 +74,30 @@
     background-color: var(--primary-light-blue);
     color: var(--primary-marine-blue);
     border: unset;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .form-wrapper {
+    flex-direction: column;
+  }
+
+  .form-status {
+    background: url(../../images/bg-sidebar-mobile.svg);
+    background-size: cover;
+    width: 100%;
+    height: 25vh;
+    padding-top: 0;
+    border-radius: 0;
+  }
+
+  .form-status .list {
+    display: flex;
+    justify-content: center;
+    height: 25vh;
+  }
+
+  .form-status .list .inner-list {
+    margin: 4rem 2rem;
   }
 }

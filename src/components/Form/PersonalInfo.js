@@ -1,96 +1,163 @@
-import React, { useState, useReducer, useContext } from "react";
-import { formContext } from "../../context/formContext";
+import React, {
+  useReducer,
+  useContext,
+  useCallback,
+  useState,
+  useEffect,
+} from "react";
 
+import "./Form.css";
+import { formContext } from "../../context/formContext";
+import { VALIDATOR_EMAIL, VALIDATOR_REQUIRE } from "../../util/validators";
 import Button from "../UI/Button";
 import Input from "../UI/Input";
-import Form from "./Form";
 
-// const formReducer = (state, action) => {
-//   switch (action.type) {
-//     case "VALIDATE_NAME_INPUT":
-//       if(!state.inputs.name.value) {
-//         return {...state, state.inputs[action.inputType]: action.payload}
-//       }
-//   }
-// };
+const formReducer = (state, action) => {
+  switch (action.type) {
+    case "INPUT_CHANGE":
+      let formIsValid = true;
+
+      for (const input in state.inputs) {
+        if (input === action.input) {
+          formIsValid = formIsValid && action.isValid;
+        } else {
+          formIsValid = formIsValid && state.inputs[input].isValid;
+        }
+      }
+
+      return {
+        ...state,
+        inputs: {
+          ...state.inputs,
+          [action.input]: { value: action.value, isValid: action.isValid },
+        },
+        formIsValid: formIsValid,
+      };
+    case "PROMPT_IF_EMPTY":
+      return {
+        ...state,
+        inputs: {
+          ...state.inputs,
+          name: { ...state.inputs.name, isValid: false },
+          email: { ...state.inputs.email, isValid: false },
+          phone: { ...state.inputs.phone, isValid: false },
+        },
+      };
+    default:
+      return state;
+  }
+};
 
 const PersonalInfo = () => {
-    // const [formState, dispatch] = useReducer(formReducer, {
-    //   inputs: {
-    //     name: {
-    //       value: "",
-    //       isValid: false,
-    //     },
-    //     email: {
-    //       value: "",
-    //       isValid: false,
-    //     },
-    //     phone: {
-    //       value: "",
-    //       isValid: false,
-    //     },
-    //   },
-    //   formIsValid: false,
-    // });
+  const [checkIfNameEmpty, setCheckIfNameEmpty] = useState(false);
+  const [checkIfEmailEmpty, setCheckIfEmailEmpty] = useState(false);
+  const [checkIfPhoneEmpty, setCheckIfPhoneEmpty] = useState(false);
 
-    // const inputChangeHandler = (e) => {
-    //   dispatch({ type: "" });
-    // };
+  const [formState, dispatch] = useReducer(formReducer, {
+    inputs: {
+      name: {
+        value: "",
+        isValid: false,
+      },
+      email: {
+        value: "",
+        isValid: false,
+      },
+      phone: {
+        value: "",
+        isValid: false,
+      },
+    },
+    formIsValid: false,
+  });
+
+  useEffect(() => {
+    setCheckIfNameEmpty(false);
+    setCheckIfEmailEmpty(false);
+    setCheckIfPhoneEmpty(false);
+  }, []);
+
+  const inputChangeHandler = useCallback((inputField, value, isValid) => {
+    dispatch({
+      type: "INPUT_CHANGE",
+      input: inputField,
+      value: value,
+      isValid: isValid,
+    });
+  }, []);
 
   const formCtx = useContext(formContext);
 
-  const personalInfoFormHandler = (e) => {
+  const nextPageHandler = (e) => {
     e.preventDefault();
-  };
 
-  const nextPageHandler = () => {
+    if (formState.formIsValid) {
+      const data = {
+        name: formState.inputs.name.value,
+        email: formState.inputs.email.value,
+        phone: formState.inputs.phone.value,
+      };
+      formCtx.setFormData({ ...formCtx.formData, ...data });
+      formCtx.setFormState("plan");
+    }
 
-    formCtx.setFormState("plan");
+    if (formState.inputs.name.value === "") {
+      setCheckIfNameEmpty(true);
+    }
+
+    if (formState.inputs.email.value === "") {
+      setCheckIfEmailEmpty(true);
+    }
+
+    if (formState.inputs.phone.value === "") {
+      setCheckIfPhoneEmpty(true);
+    }
   };
 
   return (
-    <Form
-      onSubmit={personalInfoFormHandler}
-      title="Personal Info"
-      description="Please provide your name, email address, and phone number."
-    >
+    <>
       <Input
+        id="name"
         type="text"
         title="Name"
         label="name"
-        value=""
         placeholder="e.g Stephen King"
+        initialValue={formCtx.formData.name || ""}
+        invalidInput={checkIfNameEmpty}
+        validators={[VALIDATOR_REQUIRE()]}
+        onInput={inputChangeHandler}
         errorText="This field is required"
-        // onChange={}
       />
       <Input
+        id="email"
         type="email"
         title="Email Adress"
         label="email"
-        value=""
         placeholder="e.g stephenking@lorem.com"
-        errorText="This field is required"
+        initialValue={formCtx.formData.email || ""}
+        invalidInput={checkIfEmailEmpty}
+        validators={[VALIDATOR_EMAIL(), VALIDATOR_REQUIRE()]}
+        onInput={inputChangeHandler}
+        errorText={"Please enter a valid email address"}
       />
       <Input
+        id="phone"
         type="phone"
         title="Phone Number"
         label="phone"
-        value=""
-        placeholder="e.g Stephen King"
+        placeholder="e.g 1234 5678"
+        initialValue={formCtx.formData.phone || ""}
+        invalidInput={checkIfPhoneEmpty}
+        validators={[VALIDATOR_REQUIRE()]}
+        onInput={inputChangeHandler}
         errorText="This field is required"
       />
-      <div
-        style={{
-          marginTop: "auto",
-          display: "flex",
-          justifyContent: "flex-end",
-        }}
-      >
-        <Button type="submit" styles="next-step" onClick={nextPageHandler}>
+      <div className="button-wrapper">
+        <Button type="button" styles="next-step" onClick={nextPageHandler}>
           Next Step
         </Button>
       </div>
-    </Form>
+    </>
   );
 };
 

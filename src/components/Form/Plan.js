@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 
-import Form from "./Form";
 import Button from "../UI/Button";
 import "./Plan.css";
 import { formContext } from "../../context/formContext";
@@ -12,14 +11,13 @@ import pro from "../../images/icon-pro.svg";
 import ToggleSwitch from "../UI/ToggleSwitch";
 
 const Plan = () => {
-  const [currentPlan, setCurrentPlan] = useState("");
-  const [planPeriod, setPlanPeriod] = useState("monthly");
-
   const formCtx = useContext(formContext);
+  const { formData, setFormData, setFormState } = formCtx;
 
-  const planFormHandler = (e) => {
-    e.preventDefault();
-  };
+  const [currentPlan, setCurrentPlan] = useState(
+    { name: "arcade", price: 9 } || formData.plan
+  );
+  const [planPeriod, setPlanPeriod] = useState(formData.period || "monthly");
 
   const selectPlanHandler = (plan) => {
     setCurrentPlan(plan);
@@ -33,35 +31,41 @@ const Plan = () => {
     }
   };
 
+  const nextPageHandler = () => {
+    setFormData({
+      ...formData,
+      plan: currentPlan,
+      period: planPeriod,
+    });
+
+    setFormState("add-ons");
+  };
+
   return (
-    <Form
-      onSubmit={planFormHandler}
-      title="Select your plan"
-      description="You have the option of monthly or yearly billing."
-    >
+    <>
       <div className="plan-wrapper">
         <RadioCard
           imageUrl={arcade}
           title="Arcade"
-          price="$9/mo"
-          active={currentPlan === "arcade" ? true : undefined}
-          onClick={() => selectPlanHandler("arcade")}
+          price={planPeriod === "monthly" ? "$9/mo" : "$90/yr"}
+          active={currentPlan.name === "arcade" ? true : undefined}
+          onClick={() => selectPlanHandler({ name: "arcade", price: 9 })}
           isYearly={planPeriod === "yearly"}
         />
         <RadioCard
           imageUrl={advanced}
           title="Advanced"
-          price="$12/mo"
-          active={currentPlan === "advanced" ? true : undefined}
-          onClick={() => selectPlanHandler("advanced")}
+          price={planPeriod === "monthly" ? "$12/mo" : "$120/yr"}
+          active={currentPlan.name === "advanced" ? true : undefined}
+          onClick={() => selectPlanHandler({ name: "advanced", price: 12 })}
           isYearly={planPeriod === "yearly"}
         />
         <RadioCard
           imageUrl={pro}
           title="Pro"
-          price="$15/mo"
-          active={currentPlan === "pro" ? true : undefined}
-          onClick={() => selectPlanHandler("pro")}
+          price={planPeriod === "monthly" ? "$15/mo" : "$150/yr"}
+          active={currentPlan.name === "pro" ? true : undefined}
+          onClick={() => selectPlanHandler({ name: "pro", price: 15 })}
           isYearly={planPeriod === "yearly"}
         />
       </div>
@@ -74,7 +78,11 @@ const Plan = () => {
           >
             Monthly
           </p>
-          <ToggleSwitch name="period" isChecked={planPeriodHandler} />
+          <ToggleSwitch
+            name="period"
+            checked={planPeriod === "monthly" ? false : true}
+            isChecked={planPeriodHandler}
+          />
           <p
             className={`plan-switch-period ${
               planPeriod === "yearly" && "selected"
@@ -84,29 +92,19 @@ const Plan = () => {
           </p>
         </div>
       </div>
-      <div
-        style={{
-          marginTop: "auto",
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
+      <div className="button-wrapper">
         <Button
-          type="submit"
+          type="button"
           styles="go-back"
           onClick={() => formCtx.setFormState("personal")}
         >
           Go Back
         </Button>
-        <Button
-          type="submit"
-          styles="next-step"
-          onClick={() => formCtx.setFormState("add-ons")}
-        >
+        <Button type="button" style={{marginLeft: "auto"}} styles="next-step" onClick={nextPageHandler}>
           Next Step
         </Button>
       </div>
-    </Form>
+    </>
   );
 };
 

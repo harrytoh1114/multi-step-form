@@ -16,6 +16,10 @@
   color: var(--primary-marine-blue);
 }
 
+.summary-card-plan-title span {
+  text-transform: capitalize;
+}
+
 .summary-card-plan-change {
   font-family: var(--font-regular);
   font-size: 1.4rem;
@@ -23,7 +27,7 @@
   text-decoration: underline;
   cursor: pointer;
   transition: all 0.2s;
-  background-color: var(--secondary-white);
+  background-color: var(--secondary-magnolia);
   border: none;
 }
 
@@ -47,7 +51,7 @@
 .summary-card-plan-addOns {
   display: flex;
   flex-direction: column;
-  row-gap: 5px;
+  row-gap: 2rem;
 }
 
 .summary-card-plan-addOn {

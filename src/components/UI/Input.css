@@ -17,6 +17,8 @@
 }
 
 .input-error {
+  font-family: var(--font-medium);
+  font-size: 1.4rem;
   color: var(--primary-strawberry-red);
 }
 
@@ -24,8 +26,11 @@
   border: 1px solid var(--secondary-light-gray);
   padding: 1rem;
   border-radius: 8px;
-  cursor: pointer;
   transition: all 0.2s;
+}
+
+.input.error {
+  border: 1px solid var(--primary-strawberry-red);
 }
 
 .input:focus {

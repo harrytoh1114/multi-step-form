@@ -1,16 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import "./CheckCard.css";
 
-const CheckCard = ({ name, title, description, price }) => {
+const CheckCard = ({ name, title, description, price, onClick, checked }) => {
   const [isChecked, setIsChecked] = useState(false);
+  const [defaultChecked, setDefaultChecked] = useState(undefined);
+
+  useEffect(() => {
+    if (checked === title) {
+      setDefaultChecked(true);
+    } else {
+      setDefaultChecked(false);
+    }
+  }, [checked, title]);
 
   return (
-    <div className={`check-card ${isChecked ? "selected" : undefined}`}>
+    <div
+      className={`check-card ${
+        isChecked || defaultChecked ? "selected" : undefined
+      }`}
+    >
       <label className="check-card-details" htmlFor={name}>
         <input
           type="checkbox"
           id={name}
+          defaultChecked={defaultChecked}
+          onClick={onClick}
           onChange={(e) => {
             setIsChecked(e.target.checked);
           }}

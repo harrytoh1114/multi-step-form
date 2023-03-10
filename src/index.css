@@ -50,4 +50,5 @@ html {
 body {
   font-size: 1.6rem;
   background-color: var(--secondary-magnolia);
+  position: relative;
 }

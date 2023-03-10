@@ -31,3 +31,14 @@
 .plan-switch-period.selected {
   color: var(--primary-marine-blue);
 }
+
+@media only screen and (max-width: 768px) {
+  .plan-wrapper {
+    flex-direction: column;
+    row-gap: 1.5rem;
+  }
+
+  .plan-switch-wrapper {
+    width: 18rem;
+  }
+}
